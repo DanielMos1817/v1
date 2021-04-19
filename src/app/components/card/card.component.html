@@ -1,0 +1,32 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Jugador {{player}}</h5>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">B</th>
+        <th class="text-center">I</th>
+        <th class="text-center">N</th>
+        <th class="text-center">G</th>
+        <th class="text-center">O</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--      <div *ngIf="bingoNumbers!==undefined">-->
+      <tr *ngFor="let number of bingoNumbers?.colB;index as i">
+        <td class="text-center">{{bingoNumbers?.colB[i]}}</td>
+        <td class="text-center">{{bingoNumbers?.colI[i]}}</td>
+        <td class="text-center">{{bingoNumbers?.colN[i]}}</td>
+        <td class="text-center">{{bingoNumbers?.colG[i]}}</td>
+        <td class="text-center">{{bingoNumbers?.colO[i]}}</td>
+      </tr>
+      <!--      </div>-->
+      </tbody>
+    </table>
+    <div class="row text-center">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-sm btn-success mt-1" (click)="bingo()">Bingo !!!</button>
+      </div>
+    </div>
+  </div>
+</div>

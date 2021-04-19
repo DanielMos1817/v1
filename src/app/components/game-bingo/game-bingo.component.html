@@ -1,0 +1,35 @@
+<!--Navbar-->
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Bingo</a>
+</nav>
+
+<div class="row">
+  <h4 class="text-center"> Números llamados</h4>
+  <h6 class="text-primary">{{calledNumbers.toString()}}</h6>
+</div>
+<div class="row mt-2 align-items-center">
+  <div class="col-md-6">
+    <h1 class="text-center">{{newNumber}} </h1>
+  </div>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-sm text-right btn-primary" (click)="getNewNumber()">
+      Generar Número
+    </button>
+    <br>
+    <button type="button" class="btn btn-sm text-right btn-success mt-1" (click)="generateCard()">
+      Generar Cartilla
+    </button>
+    <br>
+    <h6 class="text-right"> Número de cartillas {{ cards.length}}</h6>
+  </div>
+</div>
+<hr>
+<h4 class="text-center"> Cartillas</h4>
+<br>
+<div class="row text-center">
+  <ng-container *ngFor="let card of cards;index as i">
+    <div class="col-md-3 my-3 mx-3">
+      <app-card [bingoNumbers]="card" [player]="i+1" (callBingo)="checkBingo($event)"></app-card>
+    </div>
+  </ng-container>
+</div>
