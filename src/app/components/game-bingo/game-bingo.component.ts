@@ -8,11 +8,10 @@ import {CardInterface} from '../models/card.interface';
 })
 export class GameBingoComponent implements OnInit {
 
-  calledNumbers: number[] = [];
-  newNumber = '';
-  countNumbersGenerate = 0;
-
-  cards: CardInterface[] = [];
+  calledNumbers: number[] = []; // numeros llamados en el bingo
+  newNumber = ''; // nuevo numero originado
+  countNumbersGenerate = 0; // cantidad de numeros llamados
+  cards: CardInterface[] = []; // tarjetas de bingo
 
   constructor() {
   }
@@ -20,7 +19,7 @@ export class GameBingoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /** Generate new number  */
+  /** Generate new number  */  // Complejidad O(n^2)
   getNewNumber(): void {
     if (this.countNumbersGenerate < 75) {
       let generateNumber = this.generateNewNumber(1, 76);
@@ -38,7 +37,7 @@ export class GameBingoComponent implements OnInit {
     return (Math.floor(Math.random() * (max - min)) + min);
   }
 
-  /** Function generate numbers no repeat */
+  /** Function generate array of numbers no repeat */ // complejidad O(n^2)
   // tslint:disable-next-line:variable-name
   getArrayNumbers(min: number, max: number, count_numbers: number): any[] {
     const arrayNumbers: any[] = [];
@@ -52,7 +51,7 @@ export class GameBingoComponent implements OnInit {
     return arrayNumbers;
   }
 
-  /** Create new card Bingo */
+  /** Create new card Bingo */ // Complejidad O(n^2)
   generateCard(): void {
     const card: CardInterface = {
       colB: this.getArrayNumbers(1, 16, 5),
@@ -66,7 +65,7 @@ export class GameBingoComponent implements OnInit {
     this.cards.push(card);
   }
 
-  /** Function to check card Bingo */
+  /** Function to check card Bingo */ // complejidad O(n)
   checkBingo(player: number): void {
     const card: CardInterface = this.cards[player - 1];
     let message = 'El jugador ' + player + ' es el gandor';
